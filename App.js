@@ -179,7 +179,7 @@ function App() {
         </div>
       </div>
       <div className="conversion-container">
-        <h2 className="conversion-header">Weight Conversion</h2>
+        <h2 className="conversion-header">Small Weight Conversion</h2>
         <div className="conversion-input">
           <input
             type="number"
@@ -198,6 +198,9 @@ function App() {
           />
           <span>Grams</span>
         </div>
+      </div>
+      <div className="conversion-container">
+        <h2 className="conversion-header">Large Weight Conversion</h2>
         <div className="conversion-input">
           <input
             type="number"
