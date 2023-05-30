@@ -6,6 +6,10 @@ function App() {
   const [fahrenheit, setFahrenheit] = useState(0);
   const [centimeters, setCentimeters] = useState(0);
   const [inches, setInches] = useState(0);
+  const [meters, setMeters] = useState(0);
+  const [feet, setFeet] = useState(0);
+  const [kilometers, setKilometers] = useState(0);
+  const [miles, setMiles] = useState(0);
   const [ounce, setOunce] = useState(0);
   const [gram, setGrams] = useState(0);
   const [pound, setPounds] = useState(0);
@@ -33,6 +37,30 @@ function App() {
     const value = e.target.value;
     setInches(value);
     setCentimeters(value / 0.3937);
+  }
+
+  function handleMetersChange(e) {
+    const value = e.target.value;
+    setMeters(value);
+    setFeet(value * 3.28084);
+  }
+
+  function handleFeetChange(e) {
+    const value = e.target.value;
+    setFeet(value);
+    setMeters(value / 3.28084);
+  }
+
+  function handleKilometersChange(e) {
+    const value = e.target.value;
+    setKilometers(value);
+    setMiles(value * 0.621371);
+  }
+
+  function handleMilesChange(e) {
+    const value = e.target.value;
+    setMiles(value);
+    setKilometers(value / 0.621371);
   }
 
   function handleOunceChange(e) {
@@ -88,7 +116,7 @@ function App() {
         </div>
       </div>
       <div className="conversion-container">
-        <h2 className="conversion-header">Length Conversion</h2>
+        <h2 className="conversion-header">Small Length Conversion</h2>
         <div className="conversion-input">
           <input
             type="number"
@@ -106,6 +134,48 @@ function App() {
             onFocus={handleFocus}
           />
           <span>Inches</span>
+        </div>
+      </div>
+      <div className="conversion-container">
+        <h2 className="conversion-header">Medium Length Conversion</h2>
+        <div className="conversion-input">
+          <input
+            type="number"
+            value={meters}
+            onChange={handleMetersChange}
+            onFocus={handleFocus}
+          />
+          <span>Meters</span>
+        </div>
+        <div className="conversion-input">
+          <input
+            type="number"
+            value={feet}
+            onChange={handleFeetChange}
+            onFocus={handleFocus}
+          />
+          <span>Feet</span>
+        </div>
+      </div>
+      <div className="conversion-container">
+        <h2 className="conversion-header">Large Length Conversion</h2>
+        <div className="conversion-input">
+          <input
+            type="number"
+            value={kilometers}
+            onChange={handleKilometersChange}
+            onFocus={handleFocus}
+          />
+          <span>Kilometers</span>
+        </div>
+        <div className="conversion-input">
+          <input
+            type="number"
+            value={miles}
+            onChange={handleMilesChange}
+            onFocus={handleFocus}
+          />
+          <span>Miles</span>
         </div>
       </div>
       <div className="conversion-container">
