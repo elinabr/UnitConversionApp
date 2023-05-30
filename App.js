@@ -14,7 +14,7 @@ function App() {
   const [ounce, setOunce] = useState(0);
   const [gram, setGrams] = useState(0);
   const [pound, setPounds] = useState(0);
-  const [kilogram, setKilograms] = useState(0)
+  const [kilogram, setKilograms] = useState(0);
 
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
@@ -65,9 +65,32 @@ function App() {
   function handleMilesChange(e) {
     const value = e.target.value;
     setMile(value);
-    setKilometer(value / 0.621371)
+    setKilometer(value / 0.621371);
   }
 
+  function handleOunceChange(e) {
+    const value = e.target.value;
+    setOunce(value);
+    setGrams(value * 28.3495);
+  }
+
+  function handleGramsChange(e) {
+    const value = e.target.value;
+    setGrams(value);
+    setOunce(value / 28.3495);
+  }
+
+  function handlePoundChange(e) {
+    const value = e.target.value;
+    setPounds(value);
+    setKilograms(value * 0.453592);
+  }
+
+  function handleKilogramsChange(e) {
+    const value = e.target.value;
+    setKilograms(value);
+    setPounds(value / 0.453592);
+  }
 
   return (
     <div className="app-container">
@@ -118,8 +141,56 @@ function App() {
           <span>Inches</span>
         </div>
       </div>
+      <div className="conversion-container">
+        <h2 className="conversion-header">Weight Conversion</h2>
+        <div className="conversion-input">
+          <input
+            type="number"
+            value={ounce}
+            onChange={handleOunceChange}
+          />
+          <button onClick={() => copyToClipboard(ounce)}>
+            <FaCopy />
+          </button>
+          <span>Ounces</span>
+        </div>
+        <div className="conversion-input">
+          <input
+            type="number"
+            value={gram}
+            onChange={handleGramsChange}
+          />
+          <button onClick={() => copyToClipboard(gram)}>
+            <FaCopy />
+          </button>
+          <span>Grams</span>
+        </div>
+        <div className="conversion-input">
+          <input
+            type="number"
+            value={pound}
+            onChange={handlePoundChange}
+          />
+          <button onClick={() => copyToClipboard(pound)}>
+            <FaCopy />
+          </button>
+          <span>Pounds</span>
+        </div>
+        <div className="conversion-input">
+          <input
+            type="number"
+            value={kilogram}
+            onChange={handleKilogramsChange}
+          />
+          <button onClick={() => copyToClipboard(kilogram)}>
+            <FaCopy />
+          </button>
+          <span>Kilograms</span>
+        </div>
+      </div>
     </div>
   );
 }
 
 export default App;
+
